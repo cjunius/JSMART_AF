@@ -1,6 +1,5 @@
 package jsmart.ui.tests;
 
-import jsmart.WebElementAssert;
 import jsmart.ui.pages.GoogleResultsPage;
 import jsmart.ui.pages.GoogleSearchPage;
 

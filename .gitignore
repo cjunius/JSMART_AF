@@ -21,3 +21,16 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+
+jsmart/.settings/org.eclipse.core.resources.prefs
+jsmart/.settings/org.eclipse.jdt.apt.core.prefs
+jsmart/.settings/org.eclipse.m2e.core.prefs
+jsmart/.settings/org.eclipse.jdt.core.prefs
+jsmart/.project
+jsmart/.classpath
+.vscode/launch.json
+.vscode
+.factorypath
+test-output
+allure-results

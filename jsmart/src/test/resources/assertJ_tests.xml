@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="AssertJ Only Tests" verbose="5">
+    
+    <listeners>
+        <listener class-name = "jsmart.TestNGListener" />
+    </listeners>
+
     <test name="AssertJ Tests">
         <packages>
             <package name="jsmart.assertj.tests"/>
