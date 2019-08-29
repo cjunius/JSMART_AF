@@ -54,11 +54,121 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         return this;
     }
 
+    public WebElementAssert isCheckbox() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("checkbox")) {
+            failWithMessage("Expected element to be a Checkbox. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isRadio() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("radio")) {
+            failWithMessage("Expected element to be a Radio. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isSelected() {
+        isNotNull();
+
+        if(!actual.isSelected()) {
+            failWithMessage("Expected element to be selected. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isFileInput() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("file")) {
+            failWithMessage("Expected element to be a file input. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isSubmit() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("submit") {
+            failWithMessage("Expected element to be a submit. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isTextbox() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("text")) {
+            failWithMessage("Expected element to be a Textbox. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isTextArea() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("textarea")) {
+            failWithMessage("Expected element to be a Textbox. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isDropdown() {
+        isNotNull();
+
+        if(!actual.getTagName().equalsIgnoreCase("select")) {
+            failWithMessage("Expected element to be a Dropdown. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert isImage() {
+        isNotNull();
+        
+        if(!actual.getTagName().equalsIgnoreCase("img")) {
+            failWithMessage("Expected element to be an image. But was not!!");
+        }
+
+        return this;
+    }
+
+    public WebElementAssert hasText(String value){
+        isNotNull();
+
+        if(!actual.getText().equals(value)){
+            failWithMessage("Expected element to have Text <%s>. But it did not!!", value);
+        }
+
+        return this;
+    }
+
     public WebElementAssert hasAttributeValue(String attr, String value){
         isNotNull();
 
         if(!actual.getAttribute(attr).equals(value)){
             failWithMessage("Expected element to have attr <%s> value as <%s>. But was not!!", attr, value);
+        }
+
+        return this;
+    }
+
+    public WebElementAssert containsAttributeValue(String attr, String value) {
+        isNotNull();
+
+        if(!actual.getAttribute(attr).contains(value)) {
+            failWithMessage("Expected element to have attr <%s> containing value <%s>. But it did not!!", attr, value);
         }
 
         return this;
