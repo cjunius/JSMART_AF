@@ -10,26 +10,21 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseUITest extends SuiteConfiguration {
 
-    protected WebDriver webDriver;
     protected EventFiringWebDriver driver;
-    protected WebDriverEventListener webDriverEventListener;
+    protected WebDriverEventListener webDriverEventListener= new WebDriverEventHandler();
 
     @BeforeClass(alwaysRun = true)
     public void UITestSetup() {
-        webDriver = BROWSER.initialize();
-        driver = new EventFiringWebDriver(webDriver);
-        webDriverEventListener = new WebDriverEventHandler();
-        driver.register(webDriverEventListener);
+        WebDriver webDriver = browser.initialize();
+        driver = new EventFiringWebDriver(webDriver).register(webDriverEventListener);
+        driver.get(environment.getURL());
     }
 
     @AfterClass(alwaysRun = true)
     public void UITestTeardown() {
         if (driver != null) {
+            ((EventFiringWebDriver) driver).unregister(webDriverEventListener);
             driver.quit();
-            driver.unregister(webDriverEventListener);
-        }
-        if (webDriver != null) {
-            webDriver.quit();
         }
     }
 

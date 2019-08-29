@@ -1,8 +1,16 @@
 package jsmart;
 
+import org.testng.annotations.BeforeClass;
+
 public class SuiteConfiguration {
 
-    protected Environments ENVIRNONMENT = Environments.valueOf(System.getProperty("env", "PROD"));
-    protected Browsers BROWSER = Browsers.valueOf(System.getProperty("browser", "CHROME_HEADLESS"));
+    protected Environments environment;
+    protected Browsers browser;
 
+    @BeforeClass
+    public void suiteSetup() {
+        environment = Environments.valueOf(System.getProperty("jsmart.env", "PROD"));
+        browser = Browsers.valueOf(System.getProperty("jsmart.browser", "CHROME_HEADLESS"));
+    }
+    
 }

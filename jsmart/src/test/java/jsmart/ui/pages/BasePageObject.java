@@ -1,13 +1,13 @@
 package jsmart.ui.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 abstract public class BasePageObject {
 
-    private EventFiringWebDriver driver;
+    protected WebDriver driver;
 
-    public BasePageObject(EventFiringWebDriver driver) {
+    public BasePageObject(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

@@ -1,26 +1,25 @@
 package jsmart.ui.tests;
 
+import jsmart.WebElementAssert;
+import jsmart.ui.pages.GoogleResultsPage;
 import jsmart.ui.pages.GoogleSearchPage;
-import org.openqa.selenium.By;
-import org.testng.annotations.BeforeClass;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static jsmart.WebElementAssert.assertThat;
 
 @Test(groups = {"UI_Tests"})
 public class GoogleSearchTest extends BaseUITest {
 
-    @BeforeClass
-    public void testSetup() {
-        driver.get(ENVIRNONMENT.getURL());
-    }
+    Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Test
     public void googleSearchTest() {
-        GoogleSearchPage page = new GoogleSearchPage(driver);
-        page.search("Christopher Junius");
+        GoogleSearchPage searchPage = new GoogleSearchPage(driver);
+        GoogleResultsPage resultsPage = searchPage.search("Christopher Junius");
 
-        assertThat(driver.findElement(By.partialLinkText("Christopher Junius"))).isNotNull();
+        assertThat(resultsPage.cjLink).isDisplayed();
     }
-
 }

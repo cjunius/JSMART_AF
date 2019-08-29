@@ -171,12 +171,20 @@ public class WebDriverEventHandler implements WebDriverEventListener {
 
     private String getCallingClass() {
         StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+        
+        for (int i = stackTraceElements.length - 2; i >= 0; i--) {
+            if (stackTraceElements[i].getClassName().contains("jsmart.ui.pages")) {
+                return stackTraceElements[i].getClassName();
+            }
+        }
+
         for (int i = stackTraceElements.length - 2; i >= 0; i--) {
             if (stackTraceElements[i].getClassName().contains("jsmart.ui.tests")) {
                 return stackTraceElements[i].getClassName();
             }
         }
-        return null;
+
+        return "";
     }
 
 }
