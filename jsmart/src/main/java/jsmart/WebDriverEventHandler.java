@@ -1,51 +1,19 @@
 package jsmart;
 
 import com.aventstack.extentreports.service.ExtentTestManager;
-import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
 
 public class WebDriverEventHandler extends ExtentITestListenerClassAdapter implements WebDriverEventListener {
 
-    @Override
-    public synchronized void onStart(ITestContext context) {
-        super.onStart(context);
-    }
-
-    @Override
-    public synchronized void onFinish(ITestContext context) {
-        super.onFinish(context);
-    }
-
-    @Override
-    public synchronized void onTestStart(ITestResult result) {
-        super.onTestStart(result);
-    }
-
-    @Override
-    public synchronized void onTestSuccess(ITestResult result) {
-        super.onTestSuccess(result);
-    }
-
-    @Override
-    public synchronized void onTestFailure(ITestResult result) {
-        super.onTestFailure(result);
-    }
-
-    @Override
-    public synchronized void onTestSkipped(ITestResult result) {
-        super.onTestSkipped(result);
-    }
-
-    @Override
-    public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+    public static WebDriver register(WebDriver webDriver) {
+        WebDriverEventListener webDriverEventListener = new WebDriverEventHandler();
+        return new EventFiringWebDriver(webDriver).register(webDriverEventListener);
     }
 
     @Override
@@ -227,6 +195,37 @@ public class WebDriverEventHandler extends ExtentITestListenerClassAdapter imple
         Logger log = getLogger();
         log.error("THROWABLE: ", throwable);
         ExtentTestManager.getTest().fail(throwable);
+    }
+
+    @Override
+    public <X> void beforeGetScreenshotAs(OutputType<X> target) {
+        Logger log = getLogger();
+        log.info("Attempting to capture a screenshot");
+        ExtentTestManager.getTest().info("Attempting to capture a screenshot");
+    }
+
+    @Override
+    public <X> void afterGetScreenshotAs(OutputType<X> target, X screenshot) {
+        Logger log = getLogger();
+        log.info("Successfully captured a screenshot");
+        if(screenshot instanceof String) {
+            ExtentTestManager.getTest().addScreenCaptureFromBase64String((String) screenshot, "Screenshot");
+        }
+    }
+
+
+    @Override
+    public void beforeGetText(WebElement element, WebDriver driver) {
+        Logger log = getLogger();
+        log.info("Getting text from element " + element);
+        ExtentTestManager.getTest().info("Getting text from element " + element);
+    }
+
+    @Override
+    public void afterGetText(WebElement element, WebDriver driver, String text) {
+        Logger log = getLogger();
+        log.info("Successfully retrieved text " + text + " from element " + element);
+        ExtentTestManager.getTest().pass("Successfully retrieved text " + text + " from element " + element);
     }
 
     private Logger getLogger() {

@@ -3,14 +3,13 @@
 <suite name="UI Only Tests" verbose="5">
 
     <listeners>
-        <listener class-name = "jsmart.WebDriverEventHandler" />
         <listener class-name = "jsmart.TestNGListener" />
     </listeners>
 
     
     <test name="UI Tests">
         <packages>
-            <package name="jsmart.ui.tests"/>
+            <package name="jsmart.api.tests"/>
         </packages>
     </test>
 </suite>
