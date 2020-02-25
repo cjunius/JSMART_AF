@@ -28,7 +28,6 @@ public class GoogleSearchPage extends BasePage implements SmokeTestPage {
     }
 
     public GoogleSearchPage navigateTo() {
-        System.out.println("Opening www.google.com");
         driver.get("https://www.google.com");
         return this.waitForPageToLoad();
     }

@@ -166,8 +166,10 @@ public class WebDriverEventHandler extends ExtentITestListenerClassAdapter imple
 
     @Override
     public void onException(Throwable throwable, WebDriver webDriver) {
+        /*
         Logger log = getLogger();
         log.error("THROWABLE: ", throwable);
+        */
     }
 
     @Override
