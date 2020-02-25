@@ -33,7 +33,7 @@ public class BaseUITest {
     @BeforeClass(alwaysRun = true)
     public void UITestSetup() {
         environment = Environments.valueOf(System.getProperty("jsmart.env", "PROD"));
-        browser = Browsers.valueOf(System.getProperty("jsmart.browser", "CHROME"));
+        browser = Browsers.valueOf(System.getProperty("jsmart.browser", "CHROME_HEADLESS"));
 
         //Disabled most selenium messages
         Logger.getLogger("org.openqa.selenium").setLevel(Level.WARNING);

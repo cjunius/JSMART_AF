@@ -2,13 +2,14 @@ package jsmart.ui.pages;
 
 import jsmart.assertj.WebElementAssert;
 import jsmart.base.BasePage;
+import jsmart.base.SmokeTestPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogleResultsPage extends BasePage {
+public class GoogleResultsPage extends BasePage implements SmokeTestPage {
 
-    @FindBy(id = "mBMHK")
+    @FindBy(xpath = "//div[@id='result-stats']|//div[@id='mBMHK']")
     private WebElement resultStats;
 
     @FindBy(xpath = "//a[@href='https://www.flickr.com/photos/christopherjunius/']")
@@ -27,7 +28,6 @@ public class GoogleResultsPage extends BasePage {
     @Override
     public GoogleResultsPage waitForPageToLoad() {
         wait.forElement(resultStats).toAppear();
-        //wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(resultStats));
         return this;
     }
 
@@ -36,7 +36,7 @@ public class GoogleResultsPage extends BasePage {
         return new Validations();
     }
 
-    public class Validations extends BasePageValidations {
+    public class Validations extends PageValidations {
 
         public Validations pageLoaded() {
             WebElementAssert.assertThat(resultStats).isDisplayed();

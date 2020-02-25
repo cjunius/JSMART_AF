@@ -34,10 +34,5 @@ abstract public class BasePage {
     }
 
     abstract public BasePage waitForPageToLoad();
-    abstract public BasePage navigateTo();
-    abstract public BasePageValidations verify();
-    abstract public class BasePageValidations {
-        public abstract BasePageValidations pageLoaded();
-    }
 
 }

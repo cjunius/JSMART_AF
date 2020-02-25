@@ -2,11 +2,12 @@ package jsmart.ui.pages;
 
 import jsmart.assertj.WebElementAssert;
 import jsmart.base.BasePage;
+import jsmart.base.SmokeTestPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogleSearchPage extends BasePage {
+public class GoogleSearchPage extends BasePage implements SmokeTestPage {
 
     @FindBy(name = "q")
     private WebElement searchBox;
@@ -35,8 +36,7 @@ public class GoogleSearchPage extends BasePage {
     public Validations verify() {
         return new Validations();
     }
-
-    public class Validations extends BasePageValidations {
+    public class Validations extends PageValidations {
 
         public Validations pageLoaded() {
             WebElementAssert.assertThat(searchBox).isDisplayed();
