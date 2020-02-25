@@ -1,4 +1,4 @@
-package jsmart;
+package jsmart.assertj;
 
 import org.openqa.selenium.WebElement;
 

@@ -1,4 +1,4 @@
-package jsmart;
+package jsmart.logging;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
 

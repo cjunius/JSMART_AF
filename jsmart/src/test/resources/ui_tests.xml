@@ -3,8 +3,8 @@
 <suite name="UI Only Tests" verbose="5">
 
     <listeners>
-        <listener class-name = "jsmart.WebDriverEventHandler" />
-        <listener class-name = "jsmart.TestNGListener" />
+        <listener class-name = "jsmart.logging.WebDriverEventHandler" />
+        <listener class-name = "jsmart.logging.TestNGListener" />
     </listeners>
 
     
