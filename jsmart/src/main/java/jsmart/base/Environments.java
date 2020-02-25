@@ -1,4 +1,4 @@
-package jsmart;
+package jsmart.base;
 
 public enum Environments {
 

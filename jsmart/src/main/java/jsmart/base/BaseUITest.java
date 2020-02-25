@@ -1,8 +1,5 @@
 package jsmart.base;
 
-import jsmart.Browsers;
-import jsmart.Environments;
-import jsmart.WebElementWait;
 import jsmart.logging.WebDriverEventHandler;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
