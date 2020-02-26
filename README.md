@@ -15,6 +15,4 @@ Automation Framework
 | WebDriverManager | Browser Driver Binary Manager | https://github.com/bonigarcia/webdrivermanager |
 | SLF4J | Logging | https://www.slf4j.org/ |
 | Logback | Logging | https://logback.qos.ch/ |
-| Extent Reports | Reporting | https://extentreports.com/ |
-| Allure Reports | Reporting | http://allure.qatools.ru/ |
 | Report Portal | Reporting | https://reportportal.io |
