@@ -1,30 +1,26 @@
-package jsmart.base;
+package jsmart.core;
 
+import jsmart.utils.PropertiesReader;
+import jsmart.waits.WebElementWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.time.Duration;
+import java.util.Properties;
 
 abstract public class BasePage {
 
-    private static final int TIMEOUT = 5; // in Seconds
-    private static final int POLLING = 100; // in Milliseconds
-
+    protected Environments environment;
     protected WebDriver driver;
     protected WebElementWait wait;
+    protected Properties properties;
 
     public BasePage(WebDriver driver) {
-        this(driver, Duration.ofSeconds(TIMEOUT));
-    }
-
-    public BasePage(WebDriver driver, Duration timeout) {
-        this(driver, timeout, Duration.ofMillis(POLLING));
-    }
-
-    public BasePage(WebDriver driver, Duration timeout, Duration polling) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         wait = new WebElementWait(driver);
+
+        environment = Environments.valueOf(System.getProperty("jsmart.env", "PROD"));
+        properties = PropertiesReader.forEnvironment(environment);
     }
 
     public String getUrl() {

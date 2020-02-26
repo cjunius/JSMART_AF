@@ -20,7 +20,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getAttribute(attr).contains(value)) {
             failWithMessage("Expected element to have attr <%s> containing value <%s>. But it did not!!", attr, value);
         }
-
         return this;
     }
 
@@ -30,7 +29,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getAttribute(attr).equals(value)){
             failWithMessage("Expected element to have attr <%s> value as <%s>. But was not!!", attr, value);
         }
-
         return this;
     }
 
@@ -40,7 +38,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getText().equals(value)){
             failWithMessage("Expected element to have Text <%s>. But it did not!!", value);
         }
-
         return this;
     }
 
@@ -50,7 +47,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!(actual.getTagName().equalsIgnoreCase("button") || actual.getAttribute("type").equalsIgnoreCase("button"))){
             failWithMessage("Expected element to be a button. But was not!!");
         }
-
         return this;
     }
 
@@ -60,7 +56,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("checkbox")) {
             failWithMessage("Expected element to be a Checkbox. But was not!!");
         }
-
         return this;
     }
 
@@ -70,7 +65,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.isDisplayed()){
             failWithMessage("Expected element to be displayed. But was not!!");
         }
-        
         return this;
     }
 
@@ -80,7 +74,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("select")) {
             failWithMessage("Expected element to be a Dropdown. But was not!!");
         }
-
         return this;
     }
 
@@ -90,7 +83,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.isEnabled()){
             failWithMessage("Expected element to be enabled. But was not!!");
         }
-
         return this;
     }
 
@@ -100,7 +92,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("file")) {
             failWithMessage("Expected element to be a file input. But was not!!");
         }
-
         return this;
     }
 
@@ -110,7 +101,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("img")) {
             failWithMessage("Expected element to be an image. But was not!!");
         }
-
         return this;
     }
 
@@ -120,7 +110,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("a")){
             failWithMessage("Expected element to be a link. But was not!!");
         }
-
         return this;
     }
 
@@ -130,7 +119,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("radio")) {
             failWithMessage("Expected element to be a Radio. But was not!!");
         }
-
         return this;
     }
 
@@ -140,7 +128,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.isSelected()) {
             failWithMessage("Expected element to be selected. But was not!!");
         }
-
         return this;
     }
 
@@ -150,7 +137,6 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("submit")) {
             failWithMessage("Expected element to be a submit. But was not!!");
         }
-
         return this;
     }
 
@@ -160,17 +146,15 @@ public class WebElementAssert extends AbstractAssert<WebElementAssert, WebElemen
         if(!actual.getTagName().equalsIgnoreCase("textarea")) {
             failWithMessage("Expected element to be a Textbox. But was not!!");
         }
-
         return this;
     }
 
-    public WebElementAssert isTextbox() {
+    public WebElementAssert isTextBox() {
         isNotNull();
 
         if(!actual.getTagName().equalsIgnoreCase("input") || !actual.getAttribute("type").equalsIgnoreCase("text")) {
             failWithMessage("Expected element to be a Textbox. But was not!!");
         }
-
         return this;
     }
 

@@ -1,6 +1,6 @@
 package jsmart.ui.tests;
 
-import jsmart.base.BaseUITest;
+import jsmart.core.BaseUITest;
 import jsmart.ui.pages.GoogleResultsPage;
 import jsmart.ui.pages.GoogleSearchPage;
 
@@ -14,7 +14,7 @@ public class GoogleSearchTest extends BaseUITest {
 
     @BeforeClass
     public void testSetup() {
-        driver.get(environment.getURL());
+        driver.get(properties.getProperty("url"));
     }
 
     @Test

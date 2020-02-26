@@ -1,6 +1,8 @@
-package jsmart.base;
+package jsmart.core;
 
 import jsmart.logging.WebDriverEventHandler;
+import jsmart.utils.PropertiesReader;
+import jsmart.waits.WebElementWait;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -14,6 +16,7 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +24,7 @@ public class BaseUITest {
 
     protected Environments environment;
     protected Browsers browser;
+    protected Properties properties;
 
     protected WebDriver driver;
     protected Actions actions;
@@ -29,14 +33,14 @@ public class BaseUITest {
 
     @BeforeClass(alwaysRun = true)
     public void UITestSetup() {
-        environment = Environments.valueOf(System.getProperty("jsmart.env", "PROD"));
-        browser = Browsers.valueOf(System.getProperty("jsmart.browser", "CHROME_HEADLESS"));
-
         //Disabled most selenium messages
         Logger.getLogger("org.openqa.selenium").setLevel(Level.WARNING);
 
-        WebDriver webDriver = browser.initialize();
-        driver = WebDriverEventHandler.register(webDriver);
+        environment = Environments.valueOf(System.getProperty("jsmart.env", "PROD"));
+        browser = Browsers.valueOf(System.getProperty("jsmart.browser", "CHROME_HEADLESS"));
+        properties = PropertiesReader.forEnvironment(environment);
+
+        driver = WebDriverEventHandler.register(browser.initialize());
         actions = new Actions(driver);
         executor = (JavascriptExecutor) driver;
         wait = new WebElementWait(driver);
@@ -49,7 +53,7 @@ public class BaseUITest {
                 Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
                 ImageIO.write(screenshot.getImage(), "png", new File(".//screenshots//" + result.getMethod().getMethodName() + System.currentTimeMillis() + ".png"));
             } catch (Exception e) {
-                System.out.println("Exception while taking screenshot " + e.getMessage());
+                Logger.getLogger("@AfterMethod Screenshot").severe("Failed to take screenshot: " + e.getMessage());
             }
         }
 

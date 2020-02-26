@@ -1,13 +1,13 @@
 package jsmart.ui.pages;
 
 import jsmart.assertj.WebElementAssert;
-import jsmart.base.BasePage;
-import jsmart.base.SmokeTestPage;
+import jsmart.core.BasePage;
+import jsmart.core.SmokeTestable;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GoogleResultsPage extends BasePage implements SmokeTestPage {
+public class GoogleResultsPage extends BasePage implements SmokeTestable {
 
     @FindBy(xpath = "//div[@id='result-stats']|//div[@id='mBMHK']")
     private WebElement resultStats;
@@ -32,17 +32,9 @@ public class GoogleResultsPage extends BasePage implements SmokeTestPage {
     }
 
     @Override
-    public Validations verify() {
-        return new Validations();
-    }
-
-    public class Validations extends PageValidations {
-
-        public Validations pageLoaded() {
-            WebElementAssert.assertThat(resultStats).isDisplayed();
-            return this;
-        }
-
+    public GoogleResultsPage verifyPageLoaded() {
+        WebElementAssert.assertThat(resultStats).isDisplayed();
+        return this;
     }
 
 }

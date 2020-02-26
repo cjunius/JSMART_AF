@@ -22,14 +22,13 @@ public class ClassFinder {
         assert classLoader != null;
         String path = packageName.replace('.', '/');
         Enumeration<URL> resources = classLoader.getResources(path);
-        List<File> dirs = new ArrayList();
+        ArrayList<Class> classes = new ArrayList();
         while (resources.hasMoreElements()) {
             URL resource = resources.nextElement();
-            dirs.add(new File(resource.getFile()));
-        }
-        ArrayList<Class> classes = new ArrayList();
-        for (File directory : dirs) {
-            classes.addAll(findClasses(directory, packageName));
+            File file = new File(resource.getFile());
+            if(file.isDirectory()) {
+                classes.addAll(findClasses(file, packageName));
+            }
         }
         return classes.toArray(new Class[classes.size()]);
     }
