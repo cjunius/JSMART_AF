@@ -1,6 +1,7 @@
 package jsmart.utils;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class CookieAdapter {
@@ -44,7 +45,7 @@ public class CookieAdapter {
     public io.restassured.http.Cookie convertToRestAssured(org.openqa.selenium.Cookie cookie) {
 
         io.restassured.http.Cookie.Builder cookieBuilder = 
-                new io.restassured.http.Cookie(cookie.getName(), cookie.getValue());
+                new io.restassured.http.Cookie.Builder(cookie.getName(), cookie.getValue());
 
         String domain = cookie.getDomain();
         if(domain != null) {
