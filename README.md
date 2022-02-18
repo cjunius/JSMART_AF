@@ -23,6 +23,7 @@ Automation Framework
 | Sunshine | Java Test Runner Wrapper | https://github.com/tatools/sunshine/ |
 | MockServer | Mock HTTP Services | https://www.mock-server.com/ |
 | Mockito | Mocking Framework | https://site.mockito.org/ |
+| Pact | Contract Testing | https://docs.pact.io/ |
 | Awaitility | Handles waiting | https://github.com/awaitility/awaitility |
 | selenium-to-restassured | Cookie Adapter for Selenium and RestAssured | https://github.com/mwinteringham/selenium-to-restassured |
 | aShot | Selenium WebDriver Snapshot library | https://github.com/pazone/ashot |
