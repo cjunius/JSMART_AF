@@ -30,3 +30,4 @@ Automation Framework
 | BeanMother | Create Java Beans from yml files | https://github.com/keepcosmos/beanmother |
 | Mailosaur | E-mail Handler | https://github.com/mailosaur/mailosaur-java |
 | Faker | Test Data Generator | https://github.com/DiUS/java-faker |
+| ApprovalTests| Snapshot Testing in Java | https://approvaltests.com/ |
