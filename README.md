@@ -6,7 +6,7 @@ Automation Framework
 |  Java  | Language | https://www.java.com/en/  |
 | Selenium | UI Test Framework | https://www.seleniumhq.org/ |
 | Maven | Build and Dependency Management | https://maven.apache.org/ |
-| Appium | Mobile UI Test Framework | https://appium.op |
+| Appium | Mobile UI Test Framework | https://appium.io |
 | RestAssured | API Test Framework | http://rest-assured.io/ |
 | TestNG | Unit/Integration Test Framework | https://testng.org/doc/ |
 
